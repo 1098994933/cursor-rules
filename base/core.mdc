@@ -12,3 +12,4 @@ alwaysApply: true
 
 # 数据库SQL
 - 使用 INSERT OR REPLACE INTO 插入数据
+- 使用:占位符 cursor.execute("SELECT * FROM tasks WHERE task_id=:task_id", {"task_id": task_id})
