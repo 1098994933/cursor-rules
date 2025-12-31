@@ -12,7 +12,9 @@ alwaysApply: true
 
 # 数据库SQL
 - 使用 INSERT OR REPLACE INTO 插入数据
+- 尽量使用 sqlalchemy 和 pd.read_sql查询数据并返回df.to_dict('records')
 - 使用:占位符 cursor.execute("SELECT * FROM tasks WHERE task_id=:task_id", {"task_id": task_id})
+
 
 # 后端开发规范:
     1. 数据库操作维护在DBService中，其他地方不要进行数据库操作。
@@ -28,11 +30,11 @@ alwaysApply: true
        7.4 使用DBService.update_task_info方法更新任务信息
        7.5 使用DBService.delete_task_info方法删除任务信息
        7.6 使用DBService.create_xx_task方法创建任务
-    8. 参考readme已经实现的功能。进行复用。
-    9. DBService.serialize_to_json方法安全序列化dict为json。
-    10. 使用*'avc1'写入视频文件，保证浏览器可以直接运行。
     11. 必须使用Python的unittest框架进行测试。
     12. 测试文件必须以Tests.py结尾，例如：DataUtilTests.py, ModelTests.py
     13. 测试方法名必须以test_开头，例如：test_format_float, test_split_dataset
     14. 测试类和方法必须包含文档字符串，说明测试目的
     15. 使用common.logging_config.logger记录日志。
+    16. 所有函数包括xx_id的，如task_id和dataset_id，可传入参数进行指定，未传入则使用uuid。
+    # 视频文件处理
+    -- 使用*'avc1'写入视频文件，保证浏览器可以直接运行。
